@@ -21,16 +21,3 @@ Ext.define 'MainPanelUi',
       text: 'Click Me'
       name: 'click_me'
     ]
-
-Ext.define 'MainPanel',
-  extend: 'MainPanelUi'
-  count: 0
-  listeners: render: -> @bind()
-  bind: ->
-    me = @
-    { buttonClickMe, displayCount } = @fetchComponents()
-    
-    buttonClickMe.on 'click', (cmp)->
-      me.count += 1
-      displayCount.setValue me.count
-
