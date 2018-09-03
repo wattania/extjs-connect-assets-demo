@@ -6,6 +6,7 @@ Ext.define 'MainPanelUi',
     ret = 
       buttonClickMe: @down 'button[name=click_me]'
       displayCount:  @down 'displayfield'
+      
   initComponent: ->
     console.log '--- initComponent ---'
     @createItems()
