@@ -5,13 +5,14 @@ Ext.define('MainPanel', {
   count: 0,
   listeners: {
     render: function() {
-      return this.bind();
+      console.log('-- on render --');
+      this.bind();
     }
   },
   bind: function() {
     var buttonClickMe, displayCount, me;
     me = this;
-    
+
     ({buttonClickMe, displayCount} = this.fetchComponents());
     
     buttonClickMe.on('click', function(cmp) {

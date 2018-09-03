@@ -8,4 +8,4 @@ Ext.onReady ->
     items: [
       Ext.create 'MainPanel',
         flex: 1
-      ]
+    ]
