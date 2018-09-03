@@ -1,15 +1,36 @@
 Ext.define 'MainPanelUi',
-  alias: 'widget.MainPanelUi'
   extend: 'Ext.panel.Panel'
   title: 'Main Panel'
+  bodyPadding: 10
+  fetchComponents: ->
+    ret = 
+      buttonClickMe: @down 'button[name=click_me]'
+      displayCount:  @down 'displayfield'
   initComponent: ->
     console.log '--- initComponent ---'
+    @createItems()
     @callParent arguments
-    
+  
+  createItems: ->
+    @items = [
+      xtype: 'displayfield'
+      name: 'count'
+      value: 0
+    ,
+      xtype: 'button'
+      text: 'Click Me'
+      name: 'click_me'
+    ]
 
 Ext.define 'MainPanel',
   extend: 'MainPanelUi'
-  listeners:
-    render: -> @bind()
+  count: 0
+  listeners: render: -> @bind()
   bind: ->
-    console.log '- bind -'
+    me = @
+    { buttonClickMe, displayCount } = @fetchComponents()
+    
+    buttonClickMe.on 'click', (cmp)->
+      me.count += 1
+      displayCount.setValue me.count
+
